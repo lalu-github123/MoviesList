@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<a class="btn btn-primary" href="{% url 'webapp4:add_movies' %}">Add Your Favorite Movies</a>
+<div class="container">
+    <div class="row">
+        {% for i in movies %}
+        <div class="col-lg-3">
+            <div class="card h-100 w-114" style="width: 18rem;">
+               <img src="{{i.img.url}}"  class="card-img-top" style="width:287px; height:250px;" alt="...">
+               <div class="card-body">
+                  <h5 class="card-title">{{i.name}}</h5>
+                  <p class="card-text">{{i.desc}}</p>
+                   <a class="btn btn-warning" href="{% url 'webapp4:update' i.id %}">Update</a>
+                   <a class="btn btn-danger" href="{% url 'webapp4:delete' i.id %}">Delete</a>
+                   <a class="btn btn-primary" href="{% url 'webapp4:show' i.id %}">KnowMore</a>
+               </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
+
